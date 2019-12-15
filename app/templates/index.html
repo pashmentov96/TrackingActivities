@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <form action="" method=post enctype=multipart/form-data>
+        <input type=file name=file>
+        <input type=submit value=Upload>
+    </form>
+    {% for activity in current_user.records %}
+        <p>New activity</p>
+        {% for observation in activity.observations %}
+            <span>{{ observation.pace }}</span>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
