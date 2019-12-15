@@ -38,24 +38,6 @@ struct LoginView: View {
                 }.padding()
             }
         }
-
-//        NavigationView {
-//            VStack(spacing: 30) {
-//                TextField("username", text: $username)
-//                SecureField("password", text: $password)
-//
-//                NavigationLink(destination: ContentView()) {
-//                    Button(action: {
-//                        print("login was pressed for \(self.username)")
-//                    }) {
-//                        HStack {
-//                            Text("Let me in").bold()
-//                        }
-//                    }
-//                }
-//
-//            }.padding()
-//        }
     }
 }
 

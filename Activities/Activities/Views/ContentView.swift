@@ -23,13 +23,12 @@ struct ContentView: View {
     }
     
     func sendMessage() {
-//        let url = URL(string: "https://httpbin.org/get")!
         let url = URL(string: "http://cf6c869e.ngrok.io/api/Nikita/nrecords")!
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             guard let data = data else { return }
             let jsonDict = try? JSONSerialization.jsonObject(with: data) as? NSDictionary
             print(String(data: data, encoding: .utf8)!)
-//                let parsed_url: String = jsonDict?["origin"] as! String
+//            let parsed_url: String = jsonDict?["origin"] as! String
             print(jsonDict ?? "asdasd")
             print("LOL")
         }
