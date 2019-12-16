@@ -8,6 +8,7 @@ from werkzeug.utils import secure_filename
 import os
 import json
 from app.models import User, ActivityRecord
+from datetime import datetime
 
 
 def allowed_file(filename):
@@ -94,3 +95,21 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
+@app.route('/user/activities', methods=['GET'])
+@login_required
+def table_activities():
+    records = []
+    for record in current_user.records:
+        # date_time = datetime.fromisoformat(record.date_time)
+        elem = {
+            "name": record.name,
+            "category": record.category,
+            "distance": record.distance,
+            "heart_rate": record.heart_rate,
+            "time": record.time,
+            "difficulty": record.difficulty,
+            "date_time": record.date_time
+        }
+        records.append(elem)
+    return render_template('table_activities.html', title='Table activities', records=records)

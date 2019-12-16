@@ -1,10 +1,12 @@
 <html>
     <head>
-      {% if title %}
-      <title>{{ title }} - Tracking activities</title>
-      {% else %}
-      <title>Welcome to Tracking activities</title>
-      {% endif %}
+        {% if title %}
+        <title>{{ title }} - Tracking activities</title>
+        {% else %}
+        <title>Welcome to Tracking activities</title>
+        {% endif %}
+        <link rel="stylesheet" type="text/css" href="/static/style.css">
+        <!-- <script src="{{url_for('static', filename='somejavascriptfile.js')}}"></script> -->
     </head>
     <body>
         <div>
