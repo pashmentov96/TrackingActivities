@@ -2,14 +2,24 @@
 
 {% block content %}
     <h1>Hi, {{ current_user.username }}!</h1>
+    <p id="text_about_world">Hellow, World!</p>
+    <script>
+        p = document.getElementById('text_about_world');
+        p.innerText = 'oops';
+
+    </script>
     <form action="" method=post enctype=multipart/form-data>
         <input type=file name=file>
         <input type=submit value=Upload>
     </form>
     {% for activity in current_user.records %}
         <p>New activity</p>
-        {% for observation in activity.observations %}
-            <span>{{ observation.pace }}</span>
-        {% endfor %}
+        <p>{{ activity.name }}</p>
+        <p>{{ activity.category }}</p>
+        <p>{{ activity.distance }}</p>
+        <p>{{ activity.heart_rate }}</p>
+        <p>{{ activity.time }}</p>
+        <p>{{ activity.difficulty }}</p>
+        <p>{{ activity.date_time }}</p>
     {% endfor %}
 {% endblock %}

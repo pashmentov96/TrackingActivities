@@ -7,31 +7,24 @@ from werkzeug.urls import url_parse
 from werkzeug.utils import secure_filename
 import os
 import json
-from app.models import User, ActivityRecord, ObservationRecord
+from app.models import User, ActivityRecord
 
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'json'
 
 
-def parse_data(data, user=None):
-    if user is None:
-        username = data['username']
-        user = User.query.filter_by(username=username).first()
-
-    for activity in data['records']:
+def parse_data(data, user):
+    for activity in data:
         act = ActivityRecord(name=activity['name'],
+                             category=activity['category'],
                              distance=activity['distance'],
+                             heart_rate=activity['heartrate'],
+                             time=activity['time'],
                              difficulty=activity['difficulty'],
-                             user=current_user)
+                             date_time=activity['datetime'],
+                             user=user)
         db.session.add(act)
-        for observation in activity['observations']:
-            obs = ObservationRecord(elevation=observation['elevation'][0],
-                                    pace=observation['pace'][0],
-                                    heart_rate=observation['heartRate'][0],
-                                    distance_from_start=observation['distanceFromStart'],
-                                    activity=act)
-            db.session.add(obs)
     db.session.commit()
 
 
@@ -101,23 +94,3 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-
-@app.route('/api/add_records', methods=['POST'])
-def api_add_records():
-    data = request.json
-    parse_data(data)
-    return 'OK'
-
-
-@app.route('/api/<username>/nrecords', methods=['GET'])
-def api_nrecords(username):
-    user = User.query.filter_by(username=username).first()
-    res = 0
-    if user is None:
-        res = -1
-    else:
-        for record in user.records:
-            res += 1
-
-    json_obj = {'records': res}
-    return jsonify(json_obj)
