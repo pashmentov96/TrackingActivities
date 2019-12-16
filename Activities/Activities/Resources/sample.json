@@ -1,20 +1,24 @@
 [
     {
+        "id": 0,
         "name": "Night Run",
         "category": "running",
         "distance": 9,
         "heartrate": 110,
         "time": 2700,
         "difficulty": "hard",
-        "datetime": "2019-12-15T18:16:57.974192+03:00"
+        "datetime": "2019-12-15T18:16:57.974192+03:00",
+        "isfavorite": true
     },
     {
+        "id": 1,
         "name": "Morning Swim",
         "category": "swimming",
         "distance": 1,
         "heartrate": 100,
         "time": 600,
         "difficulty": "easy",
-        "datetime": "2019-12-15T18:16:57.974192+03:00"
+        "datetime": "2019-12-15T18:16:57.974192+03:00",
+        "isfavorite": false
     }
 ]
