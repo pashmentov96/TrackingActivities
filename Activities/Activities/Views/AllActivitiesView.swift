@@ -11,14 +11,24 @@ import SwiftUI
 struct AllActivitiesView: View {
     @EnvironmentObject var userData: UserData
     
-    @ViewBuilder
     var body: some View {
-        if userData.isempty {
-            EmptyActivitiesView()
-        } else {
-            ActivityListView()
+        VStack {
+            if self.userData.isempty {
+                EmptyActivitiesView().environmentObject(userData)
+            } else {
+                ActivityListView().environmentObject(userData)
+            }
         }
     }
+    
+//    @ViewBuilder
+//    var body: some View {
+//        if userData.isempty {
+//            EmptyActivitiesView().environmentObject(UserData())
+//        } else {
+//            ActivityListView().environmentObject(UserData())
+//        }
+//    }
 
 }
 

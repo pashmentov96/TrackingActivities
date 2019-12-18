@@ -10,21 +10,29 @@ import SwiftUI
 import Foundation
 import Combine
 
-struct ServerTokenMessage: Decodable {
-    let token: String
+struct InputTextField: View {
+    @Binding var stringBinding: String
+    
+    let placeholder: String
+    let secureTextField: Bool
+    
+    var body: some View {
+        VStack {
+            if secureTextField {
+                SecureField(placeholder, text: $stringBinding)
+            } else {
+                TextField(placeholder, text: $stringBinding)
+            }
+        }
+    }
 }
 
 class HttpAuth: ObservableObject {
-    var didChange = PassthroughSubject<HttpAuth, Never>()
+    @Published var authenticated = false
+    @State var token: String = "MOCK_TOKEN"
     
-    var authenticated = false {
-        didSet {
-            didChange.send(self)
-        }
-    }
-    
-    func checkDetails(username: String, password: String) {
-        guard let url = URL(string: "https://bb084784.ngrok.io/api/tokens") else {return}
+    func checkDetails(username: String, password: String, userData: UserData) {
+        guard let url = URL(string: "\(ngrok_url)/api/tokens") else {return}
 
         let loginString: String = "\(username):\(password)"
         let loginData = loginString.data(using: String.Encoding.utf8)!
@@ -36,68 +44,58 @@ class HttpAuth: ObservableObject {
         request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            guard let data = data else { return }
-            print("Response: \(String(data: data, encoding: .utf8)!)")
-            
+        DispatchQueue.main.async {
+            userData.token = "WdxnUke5rX6gXAqSeE/JJDV5GS+Znqt+"
             self.authenticated = true
-            
+        }
+        
+//        URLSession.shared.dataTask(with: request) { (data, response, error) in
+//
+//            guard let data = data else { return }
+//            print("Response: \(String(data: data, encoding: .utf8)!)")
+//
 //            let finalData = try! JSONDecoder().decode(ServerTokenMessage.self, from: data)
-            
+//
 //            DispatchQueue.main.async {
+//                userData.token = finalData.token
 //                self.authenticated = true
 //            }
-
-            self.authenticated = true
-//            print(self.authenticated)
-//            print(finalData.token)
-            
-        }.resume()
+//
+//        }.resume()
+        
+        print("received token")
     }
 }
 
+
 struct LoginView: View {
     @EnvironmentObject var userData: UserData
-    
-    @State var httpmanager = HttpAuth()
+
+    @ObservedObject var httpmanager = HttpAuth()
     
     @State private var username: String = "test_user"
     @State private var password: String = "test"
     
-    @State private var passed_password: String = ""
-    
     var body: some View {
         VStack {
-//            if self.userData.username != "test_user" && self.passed_password != "test" {
-            if false {
-                AllActivitiesView()
+            if httpmanager.authenticated {
+                AllActivitiesView().environmentObject(userData)
             } else {
                 VStack(spacing: 30) {
                     
-                    if self.httpmanager.authenticated {
-                        Text("authenticated")
-                    } else {
-                        Text("not authenticated")
-                    }
-                    
-                    TextField("username", text: $username)
-                    SecureField("password", text: $password)
+                    InputTextField(stringBinding: $username, placeholder: "Логин", secureTextField: false)
+                    InputTextField(stringBinding: $password, placeholder: "Пароль", secureTextField: true)
                     
                     Button(action: {
                         print("login requested for \(self.username)")
-                        
                         self.userData.username = self.username
-                        self.passed_password = self.password
-                        
-                        self.httpmanager.checkDetails(username: self.username, password: self.password)
-
-                        print(self.httpmanager.authenticated)
+                        self.httpmanager.checkDetails(username: self.username, password: self.password, userData: self.userData)
                     }) {
                         HStack {
-                            Text("Let me in").bold()
+                            Text("Войти").bold()
                         }
                     }
+
                 }.padding()
             }
         }
