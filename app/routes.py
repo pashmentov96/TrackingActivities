@@ -101,7 +101,7 @@ def register():
 def table_activities():
     records = []
     for record in current_user.records:
-        # date_time = datetime.fromisoformat(record.date_time)
+        date_time = datetime.fromisoformat(record.date_time)
         elem = {
             "name": record.name,
             "category": record.category,
@@ -109,7 +109,7 @@ def table_activities():
             "heart_rate": record.heart_rate,
             "time": record.time,
             "difficulty": record.difficulty,
-            "date_time": record.date_time
+            "date_time": date_time.isoformat(timespec='seconds')
         }
         records.append(elem)
     return render_template('table_activities.html', title='Table activities', records=records)

@@ -4,13 +4,20 @@
     <h1>Hi, {{ current_user.username }}!</h1>
     <div>
         <a href="{{ url_for('table_activities') }}">Table activities</a>
-
     </div>
-    <p id="text_about_world">Hellow, World!</p>
-    <script>
-        p = document.getElementById('text_about_world');
-        p.innerText = 'oops';
+    <div>
+        <b><p>Statistics</p></b>
+        <p>Amount of your activities: <span id="amount_activities"></span></p>
+        <div id="example" style="display: inline-block">
 
+        </div>
+        <div id="details" style="display: inline-block">
+
+        </div>
+    </div>
+    <script>
+        loadAmountActivities("{{ current_user.token }}");
+        loadActivities("{{ current_user.token }}");
     </script>
     <form action="" method=post enctype=multipart/form-data>
         <input type=file name=file>
