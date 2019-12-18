@@ -9,8 +9,6 @@ from app.routes import parse_data
 @bp.route('/user/nrecords', methods=['GET'])
 @token_auth.login_required
 def get_nrecords():
-    # username = g.current_user.username
-    # user = User.query.filter_by(username=username).first()
     user = g.current_user
     res = 0
     if user is None:
