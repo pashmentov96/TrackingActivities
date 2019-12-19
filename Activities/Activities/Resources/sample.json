@@ -1,24 +1,46 @@
 [
-    {
-        "id": 0,
-        "name": "Night Run",
-        "category": "running",
-        "distance": 9,
-        "heartrate": 110,
-        "time": 2700,
-        "difficulty": "hard",
-        "datetime": "2019-12-15T18:16:57.974192+03:00",
-        "isfavorite": true
-    },
-    {
-        "id": 1,
-        "name": "Morning Swim",
-        "category": "swimming",
-        "distance": 1,
-        "heartrate": 100,
-        "time": 600,
-        "difficulty": "easy",
-        "datetime": "2019-12-15T18:16:57.974192+03:00",
-        "isfavorite": false
-    }
+  {
+    "category": "running",
+    "datetime": "2019-12-15T18:16:57.974192+03:00",
+    "difficulty": "hard",
+    "distance": 9.0,
+    "heartrate": 110.0,
+    "id": 1,
+    "isfavorite": false,
+    "name": "Night Run",
+    "time": 2700.0
+  },
+  {
+    "category": "swimming",
+    "datetime": "2019-12-15T18:16:57.974192+03:00",
+    "difficulty": "easy",
+    "distance": 1.0,
+    "heartrate": 100.0,
+    "id": 2,
+    "isfavorite": true,
+    "name": "Morning Swim",
+    "time": 600.0
+  },
+  {
+    "category": "cycling",
+    "datetime": "2019-12-17T18:16:57.974192+03:00",
+    "difficulty": "hard",
+    "distance": 4.0,
+    "heartrate": 120.0,
+    "id": 4,
+    "isfavorite": false,
+    "name": "Training",
+    "time": 900.0
+  },
+  {
+    "category": "walking",
+    "datetime": "2019-12-17T18:16:57.974192+03:00",
+    "difficulty": "easy",
+    "distance": 2.0,
+    "heartrate": 100.0,
+    "id": 5,
+    "isfavorite": false,
+    "name": "Evening walking",
+    "time": 400.0
+  }
 ]
