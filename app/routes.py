@@ -15,6 +15,13 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'json'
 
 
+def change_favorite(id, value, user):
+    record = ActivityRecord.query.filter_by(id=id).first()
+    record.is_favorite = value
+    db.session.add(record)
+    db.session.commit()
+
+
 def parse_data(data, user):
     for activity in data:
         act = ActivityRecord(name=activity['name'],
@@ -24,6 +31,7 @@ def parse_data(data, user):
                              time=activity['time'],
                              difficulty=activity['difficulty'],
                              date_time=activity['datetime'],
+                             is_favorite=False,
                              user=user)
         db.session.add(act)
     db.session.commit()
