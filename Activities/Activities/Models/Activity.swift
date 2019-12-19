@@ -9,6 +9,10 @@
 import SwiftUI
 import CoreLocation
 
+struct ServerTokenMessage: Decodable {
+    let token: String
+}
+
 struct Activity: Hashable, Codable, Identifiable {
     var id: Int
     var name: String

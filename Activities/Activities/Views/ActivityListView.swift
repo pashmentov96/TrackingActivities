@@ -10,12 +10,12 @@ import SwiftUI
 
 struct ActivityListView: View {
     @EnvironmentObject var userData: UserData
-    
+
     var body: some View {
         NavigationView {
             List {
                 Toggle(isOn: $userData.showFavoritesOnly) {
-                    Text("Favorites only")
+                    Text("Избранное")
                 }
 
                 ForEach(self.userData.activities) { activity in
@@ -25,7 +25,7 @@ struct ActivityListView: View {
                         }
                     }
                 }
-            }.navigationBarTitle(Text("Activities of \(self.userData.username)"))
+            }.navigationBarTitle(Text(self.userData.username))
         }
     }
 }

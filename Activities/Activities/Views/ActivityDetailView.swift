@@ -18,7 +18,7 @@ struct ActivityDetailView: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
+            VStack {
                 HStack {
                     Text(activity.name)
                         .font(.title)

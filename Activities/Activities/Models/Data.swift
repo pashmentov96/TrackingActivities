@@ -10,6 +10,8 @@ import UIKit
 import SwiftUI
 import CoreLocation
 
+let ngrok_url: String = "https://aec514b0.ngrok.io"
+
 let activityData: [Activity] = load("sample.json")
 
 func load<T: Decodable>(_ filename: String) -> T {

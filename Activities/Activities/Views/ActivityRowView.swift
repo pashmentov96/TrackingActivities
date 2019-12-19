@@ -13,7 +13,8 @@ struct ActivityRowView: View {
     
     var body: some View {
         HStack {
-            Text("• \(activity.name)")
+            Text(activity.name)
+            
             Spacer()
             
             if activity.isfavorite {
