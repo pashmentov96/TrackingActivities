@@ -117,7 +117,7 @@ def table_activities():
             "heart_rate": record.heart_rate,
             "time": record.time,
             "difficulty": record.difficulty,
-            "date_time": date_time.isoformat(timespec='seconds')
+            "date_time": (str(date_time.date()) + ", " + str(date_time.hour) + ":" + str(date_time.minute))
         }
         records.append(elem)
     return render_template('table_activities.html', title='Table activities', records=records)
