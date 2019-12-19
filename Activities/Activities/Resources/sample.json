@@ -1,46 +1,57 @@
 [
   {
-    "category": "running",
-    "datetime": "2019-12-15T18:16:57.974192+03:00",
-    "difficulty": "hard",
+    "category": "walking",
+    "datetime": "2019-07-03T09:16:57.974192+03:00",
+    "difficulty": "easy",
     "distance": 9.0,
-    "heartrate": 110.0,
+    "heartrate": 102.0,
     "id": 1,
     "isfavorite": false,
-    "name": "Night Run",
-    "time": 2700.0
-  },
-  {
-    "category": "swimming",
-    "datetime": "2019-12-15T18:16:57.974192+03:00",
-    "difficulty": "easy",
-    "distance": 1.0,
-    "heartrate": 100.0,
-    "id": 2,
-    "isfavorite": true,
-    "name": "Morning Swim",
-    "time": 600.0
+    "name": "Утренняя прогулка",
+    "time": 6471
   },
   {
     "category": "cycling",
-    "datetime": "2019-12-17T18:16:57.974192+03:00",
+    "datetime": "2019-07-04T17:51:09.974192+03:00",
     "difficulty": "hard",
-    "distance": 4.0,
-    "heartrate": 120.0,
+    "distance": 22.0,
+    "heartrate": 123.0,
+    "id": 2,
+    "isfavorite": false,
+    "name": "Велопутешествие",
+    "time": 3961.0
+  },
+  {
+    "category": "swimming",
+    "datetime": "2019-07-06T13:10:11.974192+03:00",
+    "difficulty": "easy",
+    "distance": 3.0,
+    "heartrate": 112.0,
+    "id": 3,
+    "isfavorite": false,
+    "name": "Плавание",
+    "time": 2152.0
+  },
+  {
+    "category": "running",
+    "datetime": "2019-07-11T19:01:43.974192+03:00",
+    "difficulty": "hard",
+    "distance": 12.0,
+    "heartrate": 129.0,
     "id": 4,
     "isfavorite": false,
-    "name": "Training",
+    "name": "Вышел на пробежку",
     "time": 900.0
   },
   {
-    "category": "walking",
-    "datetime": "2019-12-17T18:16:57.974192+03:00",
+    "category": "cycling",
+    "datetime": "2019-07-15T17:51:09.974192+03:00",
     "difficulty": "easy",
-    "distance": 2.0,
-    "heartrate": 100.0,
+    "distance": 11.0,
+    "heartrate": 123.0,
     "id": 5,
     "isfavorite": false,
-    "name": "Evening walking",
-    "time": 400.0
+    "name": "Вечерняя велопрогулка",
+    "time": 1983.0
   }
 ]

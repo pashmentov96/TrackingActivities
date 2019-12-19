@@ -18,7 +18,7 @@ struct ActivityListView: View {
                     Text("Избранное")
                 }
 
-                ForEach(self.userData.activities) { activity in
+                ForEach(self.userData.activities!) { activity in
                     if !self.userData.showFavoritesOnly || activity.isfavorite {
                         NavigationLink(destination: ActivityDetailView(activity: activity)) {
                             ActivityRowView(activity: activity)

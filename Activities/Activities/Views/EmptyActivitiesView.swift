@@ -28,9 +28,6 @@ struct EmptyActivitiesView: View {
     func downloadData() {
         print("downloading")
         
-//        self.userData.token = "WdxnUke5rX6gXAqSeE/JJDV5GS+Znqt+"
-        print("token is \(self.userData.token)")
-        
         guard let url = URL(string: "\(ngrok_url)/api/user/get_records") else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -52,12 +49,6 @@ struct EmptyActivitiesView: View {
             }
 
         }.resume()
-        
-//        print("parsed datetime: \(self.userData.activities[0].datetime)")
-
-//        DispatchQueue.main.async {
-//            self.userData.isempty = false
-//        }
     }
 }
 

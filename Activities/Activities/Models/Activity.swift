@@ -16,8 +16,6 @@ struct ServerTokenMessage: Decodable {
 struct Activity: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
-//    var category: Category
-//    var difficulty: Difficulty
     var category: String
     var difficulty: String
     var distance: Int
@@ -25,18 +23,6 @@ struct Activity: Hashable, Codable, Identifiable {
     var time: Int
     var datetime: String
     var isfavorite: Bool
-
-//    enum Category: String, CaseIterable, Codable, Hashable {
-//        case walking = "walking"
-//        case swimming = "swimming"
-//        case running = "running"
-//        case cycling = "cycling"
-//    }
-//    
-//    enum Difficulty: String, CaseIterable, Codable, Hashable {
-//        case easy = "easy"
-//        case hard = "hard"
-//    }
 }
 
 extension Activity {

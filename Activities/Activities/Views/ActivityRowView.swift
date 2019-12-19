@@ -31,7 +31,7 @@ struct ActivityRowView: View {
     func helperIconView() -> some View {
         return activity.image
             .resizable()
-            .frame(width: 50, height: 50)
+            .frame(width: 60, height: 60)
             .clipShape(Circle())
             .shadow(radius: 3)
     }

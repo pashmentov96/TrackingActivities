@@ -13,7 +13,7 @@ struct ActivityDetailView: View {
     var activity: Activity
     
     var activityIndex: Int {
-        userData.activities.firstIndex(where: { $0.id == activity.id })!
+        userData.activities!.firstIndex(where: { $0.id == activity.id })!
     }
     
     var body: some View {
@@ -32,9 +32,9 @@ struct ActivityDetailView: View {
                     .foregroundColor(.orange)
                 
                 Button(action: {
-                    self.userData.activities[self.activityIndex].isfavorite.toggle()
+                    self.userData.activities![self.activityIndex].isfavorite.toggle()
                 }) {
-                    if self.userData.activities[self.activityIndex].isfavorite {
+                    if self.userData.activities![self.activityIndex].isfavorite {
                         Image(systemName: "star.fill")
                             .foregroundColor(Color.yellow)
                     } else {

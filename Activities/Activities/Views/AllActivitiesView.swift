@@ -20,16 +20,6 @@ struct AllActivitiesView: View {
             }
         }
     }
-    
-//    @ViewBuilder
-//    var body: some View {
-//        if userData.isempty {
-//            EmptyActivitiesView().environmentObject(UserData())
-//        } else {
-//            ActivityListView().environmentObject(UserData())
-//        }
-//    }
-
 }
 
 struct AllActivitiesView_Previews: PreviewProvider {

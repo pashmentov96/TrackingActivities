@@ -29,7 +29,6 @@ struct InputTextField: View {
 
 class HttpAuth: ObservableObject {
     @Published var authenticated = false
-    @State var token: String = "MOCK_TOKEN"
     
     func checkDetails(username: String, password: String, userData: UserData) {
         guard let url = URL(string: "\(ngrok_url)/api/tokens") else {return}
@@ -43,11 +42,6 @@ class HttpAuth: ObservableObject {
         
         request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-//        DispatchQueue.main.async {
-//            userData.token = "WdxnUke5rX6gXAqSeE/JJDV5GS+Znqt+"
-//            self.authenticated = true
-//        }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
 
