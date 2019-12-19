@@ -53,6 +53,7 @@ class ActivityRecord(db.Model):
     time = db.Column(db.Float)
     difficulty = db.Column(db.String(15))
     date_time = db.Column(db.String(40))
+    is_favorite = db.Column(db.Boolean)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 

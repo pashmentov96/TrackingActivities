@@ -3,7 +3,7 @@ from app.api.auth import token_auth
 from app.api import bp
 from app.models import User
 from flask import jsonify, request
-from app.routes import parse_data
+from app.routes import parse_data, change_favorite
 
 
 @bp.route('/user/nrecords', methods=['GET'])
@@ -45,7 +45,17 @@ def get_records():
     user = g.current_user
     json_obj = []
     for record in user.records:
-        json_obj.append({'name': record.name, 'category': record.category, 'distance': record.distance,
+        json_obj.append({'id': record.id, 'name': record.name, 'category': record.category, 'distance': record.distance,
                          'heartrate': record.heart_rate, 'time': record.time, 'difficulty': record.difficulty,
-                         'datetime': record.date_time})
+                         'datetime': record.date_time, 'isfavorite': record.is_favorite})
     return jsonify(json_obj)
+
+
+@bp.route('/user/set_favorite', methods=['POST'])
+@token_auth.login_required
+def set_favorite():
+    data = request.json
+    id = data.id
+    value = data.value
+    change_favorite(id, value, g.current_user)
+    return '', 200
