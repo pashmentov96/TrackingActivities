@@ -110,6 +110,8 @@ def table_activities():
     records = []
     for record in current_user.records:
         date_time = datetime.fromisoformat(record.date_time)
+        tmp = datetime.fromisoformat(date_time.isoformat(timespec='seconds'))
+        print(tmp)
         elem = {
             "name": record.name,
             "category": record.category,
@@ -117,7 +119,7 @@ def table_activities():
             "heart_rate": record.heart_rate,
             "time": record.time,
             "difficulty": record.difficulty,
-            "date_time": (str(date_time.date()) + ", " + str(date_time.hour) + ":" + str(date_time.minute))
+            "date_time": (str(date_time.date()) + ", " + str(tmp.time()))
         }
         records.append(elem)
     return render_template('table_activities.html', title='Table activities', records=records)
