@@ -111,7 +111,6 @@ def table_activities():
     for record in current_user.records:
         date_time = datetime.fromisoformat(record.date_time)
         tmp = datetime.fromisoformat(date_time.isoformat(timespec='seconds'))
-        print(tmp)
         elem = {
             "name": record.name,
             "category": record.category,
