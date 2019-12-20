@@ -11,13 +11,9 @@ import SwiftUI
 import Combine
 
 final class UserData: ObservableObject {
-    // @Published var activities: [Activity]? = nil
-    @Published var activities: [Activity] = activityData
-    
-    @Published var username: String = "MOCK"
-    
+    @Published var activities: [Activity]? = nil
+    @Published var username: String = ""
     @Published var token: String = ""
-
     @Published var showFavoritesOnly = false
     @Published var isempty: Bool = true
 }

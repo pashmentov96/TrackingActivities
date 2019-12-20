@@ -1,24 +1,57 @@
 [
-    {
-        "id": 0,
-        "name": "Night Run",
-        "category": "running",
-        "distance": 9,
-        "heartrate": 110,
-        "time": 2700,
-        "difficulty": "hard",
-        "datetime": "2019-12-15T18:16:57.974192+03:00",
-        "isfavorite": true
-    },
-    {
-        "id": 1,
-        "name": "Morning Swim",
-        "category": "swimming",
-        "distance": 1,
-        "heartrate": 100,
-        "time": 600,
-        "difficulty": "easy",
-        "datetime": "2019-12-15T18:16:57.974192+03:00",
-        "isfavorite": false
-    }
+  {
+    "category": "walking",
+    "datetime": "2019-07-03T09:16:57.974192+03:00",
+    "difficulty": "easy",
+    "distance": 9.0,
+    "heartrate": 102.0,
+    "id": 1,
+    "isfavorite": false,
+    "name": "Утренняя прогулка",
+    "time": 6471
+  },
+  {
+    "category": "cycling",
+    "datetime": "2019-07-04T17:51:09.974192+03:00",
+    "difficulty": "hard",
+    "distance": 22.0,
+    "heartrate": 123.0,
+    "id": 2,
+    "isfavorite": false,
+    "name": "Велопутешествие",
+    "time": 3961.0
+  },
+  {
+    "category": "swimming",
+    "datetime": "2019-07-06T13:10:11.974192+03:00",
+    "difficulty": "easy",
+    "distance": 3.0,
+    "heartrate": 112.0,
+    "id": 3,
+    "isfavorite": false,
+    "name": "Плавание",
+    "time": 2152.0
+  },
+  {
+    "category": "running",
+    "datetime": "2019-07-11T19:01:43.974192+03:00",
+    "difficulty": "hard",
+    "distance": 12.0,
+    "heartrate": 129.0,
+    "id": 4,
+    "isfavorite": false,
+    "name": "Вышел на пробежку",
+    "time": 900.0
+  },
+  {
+    "category": "cycling",
+    "datetime": "2019-07-15T17:51:09.974192+03:00",
+    "difficulty": "easy",
+    "distance": 11.0,
+    "heartrate": 123.0,
+    "id": 5,
+    "isfavorite": false,
+    "name": "Вечерняя велопрогулка",
+    "time": 1983.0
+  }
 ]

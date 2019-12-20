@@ -29,7 +29,6 @@ struct InputTextField: View {
 
 class HttpAuth: ObservableObject {
     @Published var authenticated = false
-    @State var token: String = "MOCK_TOKEN"
     
     func checkDetails(username: String, password: String, userData: UserData) {
         guard let url = URL(string: "\(ngrok_url)/api/tokens") else {return}
@@ -44,24 +43,19 @@ class HttpAuth: ObservableObject {
         request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        DispatchQueue.main.async {
-            userData.token = "WdxnUke5rX6gXAqSeE/JJDV5GS+Znqt+"
-            self.authenticated = true
-        }
-        
-//        URLSession.shared.dataTask(with: request) { (data, response, error) in
-//
-//            guard let data = data else { return }
-//            print("Response: \(String(data: data, encoding: .utf8)!)")
-//
-//            let finalData = try! JSONDecoder().decode(ServerTokenMessage.self, from: data)
-//
-//            DispatchQueue.main.async {
-//                userData.token = finalData.token
-//                self.authenticated = true
-//            }
-//
-//        }.resume()
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+            guard let data = data else { return }
+            print("Response: \(String(data: data, encoding: .utf8)!)")
+
+            let finalData = try! JSONDecoder().decode(ServerTokenMessage.self, from: data)
+
+            DispatchQueue.main.async {
+                userData.token = finalData.token
+                self.authenticated = true
+            }
+
+        }.resume()
         
         print("received token")
     }
@@ -82,6 +76,7 @@ struct LoginView: View {
                 AllActivitiesView().environmentObject(userData)
             } else {
                 VStack(spacing: 30) {
+                    iconsView()
                     
                     InputTextField(stringBinding: $username, placeholder: "Логин", secureTextField: false)
                     InputTextField(stringBinding: $password, placeholder: "Пароль", secureTextField: true)
@@ -99,6 +94,24 @@ struct LoginView: View {
                 }.padding()
             }
         }
+    }
+    
+    func loginIconView(name: String) -> some View {
+        return ImageStore.shared.image(name: name)
+            .resizable()
+            .frame(width: 50, height: 50)
+            .shadow(radius: 3)
+    }
+    
+    func iconsView() -> AnyView {
+        let res = HStack {
+            loginIconView(name: "walking")
+            loginIconView(name: "cycling")
+            loginIconView(name: "swimming")
+            loginIconView(name: "running")
+        }
+
+        return AnyView(res)
     }
 }
 

@@ -16,22 +16,17 @@ struct ServerTokenMessage: Decodable {
 struct Activity: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
-    var category: Category
+    var category: String
+    var difficulty: String
     var distance: Int
     var heartrate: Int
     var time: Int
-    var difficulty: Difficulty
     var datetime: String
     var isfavorite: Bool
+}
 
-    enum Category: String, CaseIterable, Codable, Hashable {
-        case swimming = "swimming"
-        case running = "running"
-        case cycling = "cycling"
-    }
-    
-    enum Difficulty: String, CaseIterable, Codable, Hashable {
-        case easy = "easy"
-        case hard = "hard"
+extension Activity {
+    var image: Image {
+        ImageStore.shared.image(name: category)
     }
 }
